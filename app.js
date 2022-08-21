@@ -1,31 +1,30 @@
-let now = new Date();
+const now = new Date();
 
-let hours = now.getHours();
-let minutes = now.getMinutes();
-let seconds = now.getSeconds();
-
-const weekdayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-const monthNames = ["January","February","March","April","May","June","July",
-"August","September","October","November","December"];
-
-let day = weekdayNames[now.getUTCDay()];
-let date = now.getUTCDate();
-let month = monthNames[now.getMonth()]
-let year = now.getFullYear();
-
-function clock () {
-    document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds}`
+function getTime(dateObject) {
+    const formatTime = {
+        hours: dateObject.getHours() % 12 || 12,
+        minutes: dateObject.getMinutes().toString().padStart(2, "0"),
+        seconds: dateObject.getSeconds().toString().padStart(2, "0"),
+        amOrPm: dateObject.getHours() < 12 ? "AM" : "PM"
+    };
+    return `${formatTime.hours}:${formatTime.minutes}:${formatTime.seconds} ${formatTime.amOrPm}`;
 }
 
-document.setInterval(clock, 1000)
+function getDate(dateObject) {
+    const weekNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const monthNames = ["January","February","March","April","May","June","July",
+    "August","September","October","November","December"];
+    const formatDate = {
+        day: weekNames[dateObject.getUTCDay()],
+        date: dateObject.getUTCDate(),
+        month: monthNames[dateObject.getMonth()],
+        year: dateObject.getFullYear(),
+    };
+    return `${formatDate.day}, ${formatDate.month} ${formatDate.date} ${formatDate.year}`;
+}
 
+document.getElementById("clock").innerHTML = getTime(now);
+document.getElementById("date").innerHTML = getDate(now);
 
-
-
-
-
-
-
-
-
-document.getElementById("date").innerHTML = "This is where the date while go."
+//let currentTime = setInterval(getTime(now), 1000);
+//document.getElementById("clock").innerHTML = currentTime;
