@@ -3,9 +3,9 @@ const now = new Date();
 const hours = now.getHours() % 12 || 12;
 const minutes = now.getMinutes().toString().padStart(2, "0");
 const seconds = now.getSeconds().toString().padStart(2, "0");
-const amOrPm = "AM";
+let amOrPm = "AM";
 
-if (now.getHours() < 12) {
+if (now.getHours() >= 12) {
     amOrPm = "PM";
 }
 
@@ -20,11 +20,11 @@ const month = monthNames[now.getMonth()];
 const year = now.getFullYear();
 let ordinal;
 
-if (now.getDate() == 1 || 21 || 31) {
+if (date == 1 || date == 21 || date == 31) {
     ordinal = "st";
-} else if (now.getDate() == 2 || 22 ) {
+} else if (date == 2 || date == 22) {
     ordinal = "nd";
-} else if (now.getDate() == 3 || 23) {
+} else if (date == 3 || date == 23) {
     ordinal = "rd";
 } else {
     ordinal = "th";
