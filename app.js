@@ -1,13 +1,13 @@
 const now = new Date();
 
 const hours = now.getHours() % 12 || 12;
-const minutes = now.getMinutes().toString().padStart(2, "0");
+const minutes = now.getMinutes().toString.padStart(2, "0");
 const seconds = now.getSeconds().toString.padStart(2, "0");
 const amOrPm = "AM";
 
 if (now.getHours() < 12) {
-    amOrPm = "PM"
-};
+    amOrPm = "PM";
+}
 
 const weekNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
@@ -18,7 +18,7 @@ const day = weekNames[now.getDay()];
 const date = now.getDate();
 const month = monthNames[now.getMonth()];
 const year = now.getFullYear();
-const ordinal;
+const ordinal = ""
 
 if (now.getDate() = 1 || 21 || 31) {
     ordinal = "st"
