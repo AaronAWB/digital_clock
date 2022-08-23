@@ -1,30 +1,49 @@
 const now = new Date();
 
-function getTime(dateObject) {
-    const formatTime = {
-        hours: dateObject.getHours() % 12 || 12,
-        minutes: dateObject.getMinutes().toString().padStart(2, "0"),
-        seconds: dateObject.getSeconds().toString().padStart(2, "0"),
-        amOrPm: dateObject.getHours() < 12 ? "AM" : "PM"
-    };
-    return `${formatTime.hours}:${formatTime.minutes}:${formatTime.seconds} ${formatTime.amOrPm}`;
-}
+const hours = now.getHours() % 12 || 12;
+const minutes = now.getMinutes().toString().padStart(2, "0");
+const seconds = now.getSeconds().toString.padStart(2, "0");
+const amOrPm = "AM";
 
-function getDate(dateObject) {
-    const weekNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    const monthNames = ["January","February","March","April","May","June","July",
+if (now.getHours() < 12) {
+    amOrPm = "PM"
+};
+
+const weekNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+const monthNames = ["January","February","March","April","May","June","July",
     "August","September","October","November","December"];
-    const formatDate = {
-        day: weekNames[dateObject.getUTCDay()],
-        date: dateObject.getUTCDate(),
-        month: monthNames[dateObject.getMonth()],
-        year: dateObject.getFullYear(),
-    };
-    return `${formatDate.day}, ${formatDate.month} ${formatDate.date} ${formatDate.year}`;
+
+const day = weekNames[now.getDay()];
+const date = now.getDate();
+const month = monthNames[now.getMonth()];
+const year = now.getFullYear();
+const ordinal;
+
+if (now.getDate() = 1 || 21 || 31) {
+    ordinal = "st"
+} else if (now.getDate() = 2 || 22 ) {
+    ordinal = "nd"
+} else if (now.getDate() = 3 || 23) {
+    ordinal = "rd"
+} else {
+    ordinal = "th"
+};
+
+function displayTime () {
+    document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds} ${amOrPm}`
 }
 
-document.getElementById("clock").innerHTML = getTime(now);
-document.getElementById("date").innerHTML = getDate(now);
+function displayDate () {
+    document.getElementById("date").innerHTML = `${day}, ${month} ${date}${ordinal} ${year}`;
+}
+        
+displayTime(now);
+displayDate(now);
 
-//let currentTime = setInterval(getTime(now), 1000);
-//document.getElementById("clock").innerHTML = currentTime;
+setInterval(displayTime, 1000);
+setInterval(displayDate, 1000);
+
+
+
+
