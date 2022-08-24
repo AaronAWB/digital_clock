@@ -6,7 +6,7 @@ function displayClock () {
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");
     let amOrPm = "AM";
 
-    if (currentTime.getHours() >= 12) {
+    if (hours >= 12) {
         amOrPm = "PM";
     }
 
