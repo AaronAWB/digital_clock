@@ -45,7 +45,3 @@ displayDate();
 
 setInterval(displayClock, 1000);
 setInterval(displayDate, 1000);
-
-
-
-
