@@ -2,7 +2,8 @@
 
 Visit here: https://aaronawb.github.io/digital_clock/
 
-![Uploading Screen Shot 2022-08-23 at 9.52.06 PM.png…]()
+<img width="1547" alt="Screen Shot 2022-08-23 at 9 52 06 PM" src="https://user-images.githubusercontent.com/108595340/186333467-4b854cc9-a449-41f1-886c-7add4bfc85ed.png">
+
 
 ## Summary
 
