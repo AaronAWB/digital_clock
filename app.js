@@ -2,16 +2,18 @@ function displayClock () {
     const currentTime = new Date();
 
     const militaryHours = currentTime.getHours();
-    const hours = currentTime.getHours() % 12 || 12;
+    const standardHours = currentTime.getHours().toString() % 12 || 12;
+    const formattedHours = standardHours.toString().padStart(2, "0")
     const minutes = currentTime.getMinutes().toString().padStart(2, "0");
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");
+   
     let amOrPm = "AM";
 
     if (militaryHours >= 12) {
         amOrPm = "PM";
     }
 
-    document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds} ${amOrPm}`;
+    document.getElementById("clock").innerHTML = `${formattedHours}:${minutes}:${seconds} ${amOrPm}`;
 }
 
 function displayDate () {
