@@ -1,12 +1,13 @@
 function displayClock () {
     const currentTime = new Date();
 
+    const militaryHours = currentTime.getHours();
     const hours = currentTime.getHours() % 12 || 12;
     const minutes = currentTime.getMinutes().toString().padStart(2, "0");
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");
     let amOrPm = "AM";
 
-    if (hours >= 12) {
+    if (militaryHours >= 12) {
         amOrPm = "PM";
     }
 
