@@ -26,7 +26,7 @@ function displayDate () {
     const year = currentDate.getFullYear();
     const ordinal = getOrdinal(date);
 
-    const  dateDisplay= document.getElementById("date");
+    const dateDisplay= document.getElementById("date");
     dateDisplay.innerHTML = `${day}, ${month} ${date}${ordinal} ${year}`;
 }
 
@@ -51,4 +51,5 @@ function getTime () {
     displayClock();
     displayDate();
 }
+
 setInterval(getTime, 1000);
