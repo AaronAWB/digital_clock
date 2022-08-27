@@ -6,13 +6,10 @@ function displayClock () {
     const formattedHours = standardHours.toString().padStart(2, "0")
     const minutes = currentTime.getMinutes().toString().padStart(2, "0");
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");
-    let amOrPm = "AM";
+    const amOrPm = militaryHours <= 12 ? "AM" : "PM";
 
-    if (militaryHours >= 12) {
-        amOrPm = "PM";
-    }
-
-    document.getElementById("clock").innerHTML = `${formattedHours}:${minutes}:${seconds} ${amOrPm}`;
+    const clockDisplay = document.getElementById("clock")
+    clockDisplay.textContent = `${formattedHours}:${minutes}:${seconds} ${amOrPm}`;
 }
 
 function displayDate () {
@@ -27,23 +24,31 @@ function displayDate () {
     const date = currentDate.getDate();
     const month = monthNames[currentDate.getMonth()];
     const year = currentDate.getFullYear();
-    let ordinal;
+    const ordinal = getOrdinal(date);
 
-    if (date == 1 || date == 21 || date == 31) {
-        ordinal = "st";
-    } else if (date == 2 || date == 22) {
-        ordinal = "nd";
-    } else if (date == 3 || date == 23) {
-        ordinal = "rd";
-    } else {
-        ordinal = "th";
+    const  dateDisplay= document.getElementById("date");
+    dateDisplay.innerHTML = `${day}, ${month} ${date}${ordinal} ${year}`;
+}
+
+function getOrdinal (date) {
+    if (date > 20 || date < 10) {
+        switch (date % 10) {
+            case 1: 
+                return "st";
+            case 2:
+                return "nd";
+            case 3:
+                return "rd";
     }
-
-    document.getElementById("date").innerHTML = `${day}, ${month} ${date}${ordinal} ${year}`;
+    return "th";
+}
 }
        
 displayClock();
 displayDate();
 
-setInterval(displayClock, 1000);
-setInterval(displayDate, 1000);
+function getTime () {
+    displayClock();
+    displayDate();
+}
+setInterval(getTime, 1000);
