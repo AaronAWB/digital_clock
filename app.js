@@ -6,7 +6,7 @@ function displayClock () {
     const formattedHours = standardHours.toString().padStart(2, "0")
     const minutes = currentTime.getMinutes().toString().padStart(2, "0");
     const seconds = currentTime.getSeconds().toString().padStart(2, "0");
-    const amOrPm = militaryHours <= 12 ? "AM" : "PM";
+    const amOrPm = militaryHours < 12 ? "AM" : "PM";
 
     const clockDisplay = document.getElementById("clock")
     clockDisplay.textContent = `${formattedHours}:${minutes}:${seconds} ${amOrPm}`;
